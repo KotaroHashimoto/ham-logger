@@ -42,16 +42,20 @@ Raspberry Pi Picoを使ってハムスター用回し車で走行ログを記録
 Raspberry Pi PicoへThonnyというソフトウェアを使って Pythonスクリプトを書き込みます。
 
 ### 環境構築
-[こちらのページを参考に](https://logikara.blog/raspi-pico-thonny-micropy/)、「１．開発環境 Thonnyのインストール方法」から「５．プログラムの保存方法」を実施してください。  
+[こちらのページを参考に](https://logikara.blog/raspi-pico-thonny-micropy/)、「１．開発環境 Thonnyのインストール方法」から「５．プログラムの保存方法」までを実施してください。  
+手順の中で使用するスクリプトはサンプルではなく、(こちらのmain.py)[https://github.com/KotaroHashimoto/ham-logger/blob/main/main.py]を使用してください。
 
+### 設定の書き換え
+#### ホイール内径の変更
+スクリプト main.py の 564行目で、Counter() の引数でしている数値を、ホイール内径[m]の数値に書き換えます。例えば21cmのホイールへ設定変更する場合は0.21に変更します。  
+<img width="800" alt="size" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/59bc4f21-ce88-4911-825b-c0657876c24e">
 
+#### ハムスターの名前の変更
+スクリプト main.py の 573行目で、Environment() の引数でしている文字列を変更します。使用できる文字はアルファベット大文字小文字と数字のみです。  
+<img width="800" alt="name" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/464cbd6b-e360-430f-b161-700ea112aef8">
 
+#### ログファイルについて
+一度起動すると、以下のようにmain.pyの他に３つのlogファイルが自動で生成されています。これらは電源OFF->ON時に再度読み込まれて前回までの記録を再表示するために使用されます。  
+![logs](https://github.com/KotaroHashimoto/ham-logger/assets/12003444/4f17824e-4de7-4eef-88a0-77f08e189823)  
 
-お使いのPCへ、[こちらの手順を参考にTonnyをインストールしてください。](https://logikara.blog/raspi-pico-thonny-micropy/#mokuji_1)  
-次のページの"Add the MicroPython firmware"は実施不要です。firmwareを書き換えるとRaspberry Pi Pico内に残っているログやPythonスクリプトが消えてしまうため、もしfiemwareを書き換えた場合は[本レポジトリのスクリプトmain.py](https://github.com/KotaroHashimoto/ham-logger)を取得して、再度スクリプトを書き込んでください。ログファイルは存在しない場合は起動時に自動作成されます。
-
-
-
-)
-
-
+もしこれまでのログをリセットしたい場合はRaspberry Pi Picoの中の3つのlogファイルを消してmain.pyだけが存在する状態にして電源投入してください。空のlogファイルが作成され新たにログが蓄積されていきます。
