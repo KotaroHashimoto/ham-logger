@@ -43,7 +43,9 @@ Raspberry Pi PicoへThonnyというソフトウェアを使って Pythonスク�
 
 ### 環境構築
 [こちらのページを参考に](https://logikara.blog/raspi-pico-thonny-micropy/)、「１．開発環境 Thonnyのインストール方法」から「５．プログラムの保存方法」までを実施してください。  
-手順の中で使用するスクリプトはサンプルではなく、[こちらのmain.py](https://github.com/KotaroHashimoto/ham-logger/blob/main/main.py)を使用してください。
+手順の中で使用するスクリプトはサンプルではなく、[こちらのmain.py](https://github.com/KotaroHashimoto/ham-logger/blob/main/main.py)を使用してください。  
+#### micro USBケーブルについて
+単に動作させるだけであればデータ通信ができなくても給電可能なUSBケーブルを使用することで問題ありませんが、プログラムの書き換え等のためにPCと通信を行う場合はデータ通信可能なmicro USBケーブルを使用する必要があることに注意ください。
 
 ### 設定の書き換え
 #### ホイール内径の変更
