@@ -42,19 +42,25 @@ Raspberry Pi Picoを使ってハムスター用回し車で走行ログを記録
 Raspberry Pi PicoへThonnyというソフトウェアを使って Pythonスクリプトを書き込みます。
 
 ### 環境構築
-[こちらのページを参考に](https://logikara.blog/raspi-pico-thonny-micropy/)、「１．開発環境 Thonnyのインストール方法」から「５．プログラムの保存方法」までを実施してください。  
-手順の中で使用するスクリプトはサンプルではなく、[こちらのmain.py](https://github.com/KotaroHashimoto/ham-logger/blob/main/main.py)を使用してください。  
 #### micro USBケーブルについて
 単に動作させるだけであればデータ通信ができなくても給電可能なUSBケーブルを使用することで問題ありませんが、プログラムの書き換え等のためにPCと通信を行う場合はデータ通信可能なmicro USBケーブルを使用する必要があることに注意ください。
+#### Raspberry Pi Pico と PC の接続
+[こちらのページを参考に](https://krr910183393.wordpress.com/2021/02/15/raspberry-pi-pico-micropython-thonny-python-ide/)、「Thonny Python IDE のインストール」と「Raspberry Pi Pico を接続」を実施してください。  
+Raspberry Pi公式ページや他のWebサイトも似たような手順が書かれていて参考になりますが、"MicroPython firmwareの書き込み"手順は不要です。firmwareはすでに書き込んであり、もし最新バージョンに上げるとスクリプトと互換性がなくなる可能性があるため、MicroPython firmwareの書き込みは行わないでください。  
+#### Raspberry Pi Pico 中のファイル閲覧
+[こちらのページを参考に](https://sanuki-tech.net/and-more/2022/raspberry-pi-pico-file-list/)、Raspberry Pi Picoに書き込んであるスクリプト(main.py)をThonnyで開いてください。  
+[こちらのレポジトリ](https://github.com/KotaroHashimoto/ham-logger/blob/main/main.py)でも同一のスクリプトを取得することができます。  
 
 ### 設定の書き換え
 #### ホイール内径の変更
 スクリプト main.py の 564行目で、Counter() の引数でしている数値を、ホイール内径[m]の数値に書き換えます。例えば21cmのホイールへ設定変更する場合は0.21に変更します。  
-<img width="800" alt="size" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/59bc4f21-ce88-4911-825b-c0657876c24e">
+<img width="800" alt="size" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/59bc4f21-ce88-4911-825b-c0657876c24e">  
+Raspberry Pi Pico 上でスクリプトを書き換えたら上書き保存すると次回起動時に変更が反映されます。
 
 #### ハムスターの名前の変更
 スクリプト main.py の 573行目で、Environment() の引数でしている文字列を変更します。使用できる文字はアルファベット大文字小文字と数字のみです。  
-<img width="800" alt="name" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/464cbd6b-e360-430f-b161-700ea112aef8">
+<img width="800" alt="name" src="https://github.com/KotaroHashimoto/ham-logger/assets/12003444/464cbd6b-e360-430f-b161-700ea112aef8">  
+Raspberry Pi Pico 上でスクリプトを書き換えたら上書き保存すると次回起動時に変更が反映されます。
 
 #### ログファイルについて
 一度起動すると、以下のようにmain.pyの他に３つのlogファイルが自動で生成されています。これらは電源OFF->ON時に再度読み込まれて前回までの記録を再表示するために使用されます。  
